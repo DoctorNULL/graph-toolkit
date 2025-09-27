@@ -55,7 +55,7 @@ namespace gtk {
 		* @RETURN
 		* bool whether child exists or not
 		*/
-		bool HasChild(std::string name);
+		bool HasChild(const std::string& name);
 
 		/*
 		* Gets a reference to the child if exists
@@ -67,7 +67,7 @@ namespace gtk {
 		* @RETURN
 		* A reference to the child if exsits, otherwise returns NULL
 		*/
-		std::shared_ptr<Node> FetchChild(std::string name);
+		std::shared_ptr<Node> FetchChild(const std::string& name);
 
 		/*
 		* @RETURN
@@ -104,7 +104,7 @@ namespace gtk {
 		* @RETURN
 		* The degree of this node
 		*/
-		size_t degree();
+		size_t Degree();
 	
 	};
 

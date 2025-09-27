@@ -17,17 +17,17 @@ bool gtk::Node::AddChild(std::shared_ptr<Node> child, double weight)
 	return true;
 }
 
-size_t gtk::Node::degree()
+size_t gtk::Node::Degree()
 {
 	return this->children.size();
 }
 
-bool gtk::Node::HasChild(std::string name)
+bool gtk::Node::HasChild(const std::string& name)
 {
 	return this->FetchChild(name) != NULL;
 }
 
-std::shared_ptr<gtk::Node> gtk::Node::FetchChild(std::string name)
+std::shared_ptr<gtk::Node> gtk::Node::FetchChild(const std::string& name)
 {
 	for (size_t i = 0; i < this->children.size(); i++)
 	{
@@ -81,7 +81,7 @@ std::ostream& gtk::operator<<(std::ostream& out, std::shared_ptr<Node> node)
 
 	for (size_t i = 0; i < node->children.size(); i++)
 	{
-		out << " |" << node->children[i] << "| ";
+		out << " |" << node->children[i] << " | ";
 	}
 
 	out << std::endl;

@@ -11,7 +11,7 @@ namespace gtk {
 	public:
 
 		// Inherited via Graph
-		bool ConnectNodes(std::string parent, std::string child, double weight = 0) override;
+		bool ConnectNodes(const std::string& parent,const std::string& child, double weight = 0) override;
 
 	};
 
@@ -20,7 +20,7 @@ namespace gtk {
 	public:
 
 		// Inherited via Graph
-		bool ConnectNodes(std::string parent, std::string child, double weight = 0) override;
+		bool ConnectNodes(const std::string& parent, const std::string& child, double weight = 0) override;
 
 	};
 
@@ -29,14 +29,14 @@ namespace gtk {
 	public:
 
 		// Inherited via Graph
-		bool ConnectNodes(std::string parent, std::string child, double weight = 0) override;
+		bool ConnectNodes(const std::string& parent, const std::string& child, double weight = 0) override;
 
 	};
 
 	class BinaryTree : public Tree {
 
 		// Inherited via Graph
-		bool ConnectNodes(std::string parent, std::string child, double weight = 0) override;
+		bool ConnectNodes(const std::string& parent, const std::string& child, double weight = 0) override;
 
 	};
 }

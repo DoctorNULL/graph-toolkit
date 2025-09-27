@@ -1,6 +1,6 @@
 #include "Graph.h"
 
-bool gtk::Graph::AddNode(std::string name)
+bool gtk::Graph::AddNode(const std::string& name)
 {
 	if (this->HasNode(name))
 		return false;
@@ -9,7 +9,7 @@ bool gtk::Graph::AddNode(std::string name)
 	return true;
 }
 
-bool gtk::Graph::HasNode(std::string name)
+bool gtk::Graph::HasNode(const std::string& name)
 {
 	if (this->nodes.find(name) == this->nodes.cend())
 		return false;
@@ -17,7 +17,7 @@ bool gtk::Graph::HasNode(std::string name)
 	return true;
 }
 
-std::shared_ptr<gtk::Node> gtk::Graph::FetchNode(std::string name)
+std::shared_ptr<gtk::Node> gtk::Graph::FetchNode(const std::string& name)
 {
 	if (HasNode(name))
 		return this->nodes[name];

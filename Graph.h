@@ -26,7 +26,7 @@ namespace gtk {
 		* @RETURN
 		* returns true if the node added successfully, otherwise false
 		*/
-		bool AddNode(std::string name);
+		bool AddNode(const std::string& name);
 
 		/*
 		* Adds an edge for the graph
@@ -40,7 +40,7 @@ namespace gtk {
 		* @RETURN
 		* returns true if the node added successfully, otherwise false
 		*/
-		virtual bool ConnectNodes(std::string parent, std::string child, double weight = 0) = 0;
+		virtual bool ConnectNodes(const std::string& parent,const std::string& child, double weight = 0) = 0;
 
 		/*
 		* Checks if node exists in this graph
@@ -53,7 +53,7 @@ namespace gtk {
 		* 
 		* true if the node exists, false otherwise
 		*/
-		bool HasNode(std::string name);
+		bool HasNode(const std::string& name);
 
 		/*
 		* fetches a reference to an existing node in the graph
@@ -65,7 +65,7 @@ namespace gtk {
 		* @RETURN
 		* A pointer to the node if exists, otherwise NULL
 		*/
-		std::shared_ptr<Node> FetchNode(std::string name);
+		std::shared_ptr<Node> FetchNode(const std::string& name);
 
 		/*
 		* @RETURN
