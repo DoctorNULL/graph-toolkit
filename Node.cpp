@@ -22,6 +22,17 @@ size_t gtk::Node::Degree()
 	return this->children.size();
 }
 
+double gtk::Node::ConnectionWeight(std::string name)
+{
+	for (size_t i = 0; i < children.size(); i++)
+	{
+		if (children[i].distenation->Name() == name)
+			return children[i].weight;
+	}
+
+	return std::numeric_limits<double>::max();
+}
+
 bool gtk::Node::HasChild(const std::string& name)
 {
 	return this->FetchChild(name) != NULL;

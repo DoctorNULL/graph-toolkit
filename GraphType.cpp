@@ -36,7 +36,7 @@ bool gtk::Tree::ConnectNodes(const std::string& parent, const std::string& child
     for (size_t i = 0; i < childChildren.size(); i++)
     {
         // Prevent Cycles
-        if (this->FetchNode(childChildren[i])->HasChild(parent))
+        if (this->FetchNode(childChildren[i])->HasChild(parent) || this->FetchNode(child)->HasChild(parent))
             return false;
     }
 

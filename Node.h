@@ -105,6 +105,15 @@ namespace gtk {
 		* The degree of this node
 		*/
 		size_t Degree();
+
+		/*
+		* @PARAM
+		* name: the name of the child to get the weight from
+		* 
+		* @RETURN
+		* Edge weight between node and child if exsits otherwise inf
+		*/
+		double ConnectionWeight(std::string name);
 	
 	};
 
