@@ -48,7 +48,7 @@ bool gtk::BinaryTree::ConnectNodes(const std::string& parent, const std::string&
     if (!(this->HasNode(parent) && this->HasNode(child)))
         return false;
 
-    if (this->FetchNode(parent)->degree() >= 3)
+    if (this->FetchNode(parent)->Degree() >= 3)
         return false;
 
     return Tree::ConnectNodes(parent, child, weight);
