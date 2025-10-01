@@ -20,8 +20,11 @@ namespace gtk {
 		// A weight to be used in weighted graphes
 		double weight;
 
+		// A meta data for the edge
+		std::string meta = "";
+
 		Edge() = delete; // No default Constructor
-		Edge(const std::shared_ptr<Node>& node, double weight = 0);
+		Edge(const std::shared_ptr<Node>& node, double weight = 0, std::string meta = "");
 
 		friend std::ostream& operator<< (std::ostream& out, const Edge& edge);
 	};
@@ -98,7 +101,7 @@ namespace gtk {
 		* @RETURN
 		* boolean whether it successed or failed
 		*/
-		bool AddChild(std::shared_ptr<Node> child, double weight = 0);
+		bool AddChild(std::shared_ptr<Node> child, double weight = 0, std::string meta = "");
 
 		/*
 		* @RETURN
@@ -114,6 +117,15 @@ namespace gtk {
 		* Edge weight between node and child if exsits otherwise inf
 		*/
 		double ConnectionWeight(std::string name);
+
+		/*
+		* @PARAM
+		* name: the name of the child to get the weight from
+		*
+		* @RETURN
+		* Edge meta data between node and child if exsits otherwise empty
+		*/
+		std::string ConnectionMeta(std::string name);
 	
 	};
 

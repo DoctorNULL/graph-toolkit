@@ -20,6 +20,11 @@ namespace gtk {
 
 	public:
 
+		std::string name;
+
+		Action() = delete;
+		Action(std::string name) : name(name) {}
+
 		virtual std::shared_ptr<State> Execute(std::shared_ptr<State> state) = 0;
 		virtual bool CanExecute(std::shared_ptr<State> state) = 0;
 

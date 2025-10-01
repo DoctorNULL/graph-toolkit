@@ -36,11 +36,12 @@ namespace gtk {
 		* parent: name of the node to insert into
 		* child: name of the node to be inserted
 		* weight: weight assigned to this edge
+		* meta: meta data on the edge
 		*
 		* @RETURN
 		* returns true if the node added successfully, otherwise false
 		*/
-		virtual bool ConnectNodes(const std::string& parent,const std::string& child, double weight = 0) = 0;
+		virtual bool ConnectNodes(const std::string& parent,const std::string& child, double weight = 0, std::string meta = "") = 0;
 
 		/*
 		* Checks if node exists in this graph

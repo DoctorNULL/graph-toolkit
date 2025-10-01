@@ -5,7 +5,7 @@ gtk::Node::Node(std::string name)
 	this->name = name;
 }
 
-bool gtk::Node::AddChild(std::shared_ptr<Node> child, double weight)
+bool gtk::Node::AddChild(std::shared_ptr<Node> child, double weight, std::string meta)
 {
 	if (child == nullptr)
 		return false;
@@ -13,7 +13,7 @@ bool gtk::Node::AddChild(std::shared_ptr<Node> child, double weight)
 	if (this->HasChild(child->name))
 		return false;
 
-	this->children.push_back(Edge(child, weight));
+	this->children.push_back(Edge(child, weight, meta));
 	return true;
 }
 
@@ -31,6 +31,18 @@ double gtk::Node::ConnectionWeight(std::string name)
 	}
 
 	return std::numeric_limits<double>::max();
+}
+
+std::string gtk::Node::ConnectionMeta(std::string name)
+{
+
+	for (size_t i = 0; i < children.size(); i++)
+	{
+		if (children[i].distenation->Name() == name)
+			return children[i].meta;
+	}
+
+	return "";
 }
 
 bool gtk::Node::HasChild(const std::string& name)
@@ -70,15 +82,16 @@ std::vector<std::string> gtk::Node::Children()
 	return res;
 }
 
-gtk::Edge::Edge(const std::shared_ptr<Node>& node, double weight)
+gtk::Edge::Edge(const std::shared_ptr<Node>& node, double weight, std::string meta)
 {
 	this->distenation = node;
 	this->weight = weight;
+	this->meta = meta;
 }
 
 std::ostream& gtk::operator<<(std::ostream& out, const Edge& edge)
 {
-	out << " - " << edge.weight << " -> " << edge.distenation->Name();
+	out << " - " << edge.meta << " (" << edge.weight << ") -> " << edge.distenation->Name();
 
 	return out;
 }

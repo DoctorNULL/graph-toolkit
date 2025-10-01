@@ -1,6 +1,6 @@
 #include "GraphType.h"
 
-bool gtk::UndirectedGraph::ConnectNodes(const std::string& parent, const std::string& child, double weight)
+bool gtk::UndirectedGraph::ConnectNodes(const std::string& parent, const std::string& child, double weight, std::string meta)
 {
     if (!(this->HasNode(parent) && this->HasNode(child)))
         return false;
@@ -8,11 +8,11 @@ bool gtk::UndirectedGraph::ConnectNodes(const std::string& parent, const std::st
     if (this->FetchNode(parent)->FetchChild(child))
         return false;
     
-    return this->FetchNode(parent)->AddChild(this->FetchNode(child), weight) &&
-        this->FetchNode(child)->AddChild(this->FetchNode(parent), weight);
+    return this->FetchNode(parent)->AddChild(this->FetchNode(child), weight, meta) &&
+        this->FetchNode(child)->AddChild(this->FetchNode(parent), weight, meta);
 }
 
-bool gtk::DirectedGraph::ConnectNodes(const std::string& parent, const std::string& child, double weight)
+bool gtk::DirectedGraph::ConnectNodes(const std::string& parent, const std::string& child, double weight, std::string meta)
 {
     if (!(this->HasNode(parent) && this->HasNode(child)))
         return false;
@@ -20,10 +20,10 @@ bool gtk::DirectedGraph::ConnectNodes(const std::string& parent, const std::stri
     if (this->FetchNode(parent)->FetchChild(child))
         return false;
 
-    return this->FetchNode(parent)->AddChild(this->FetchNode(child), weight);
+    return this->FetchNode(parent)->AddChild(this->FetchNode(child), weight, meta);
 }
 
-bool gtk::Tree::ConnectNodes(const std::string& parent, const std::string& child, double weight)
+bool gtk::Tree::ConnectNodes(const std::string& parent, const std::string& child, double weight, std::string meta)
 {
     if (!(this->HasNode(parent) && this->HasNode(child)))
         return false;
@@ -40,10 +40,10 @@ bool gtk::Tree::ConnectNodes(const std::string& parent, const std::string& child
             return false;
     }
 
-    return this->FetchNode(parent)->AddChild(this->FetchNode(child), weight);
+    return this->FetchNode(parent)->AddChild(this->FetchNode(child), weight, meta);
 }
 
-bool gtk::BinaryTree::ConnectNodes(const std::string& parent, const std::string& child, double weight)
+bool gtk::BinaryTree::ConnectNodes(const std::string& parent, const std::string& child, double weight, std::string meta)
 {
     if (!(this->HasNode(parent) && this->HasNode(child)))
         return false;
@@ -51,5 +51,5 @@ bool gtk::BinaryTree::ConnectNodes(const std::string& parent, const std::string&
     if (this->FetchNode(parent)->Degree() >= 3)
         return false;
 
-    return Tree::ConnectNodes(parent, child, weight);
+    return Tree::ConnectNodes(parent, child, weight, meta);
 }
